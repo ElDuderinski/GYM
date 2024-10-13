@@ -6,51 +6,18 @@
     <title>Gym Progress Tracker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-    <body>
-    <div class="container">
-        <!-- Calendar Section -->
-        <section class="calendar-section">
-            <h2>Workout Calendar</h2>
-            <div class="calendar-grid">
-                <!-- Calendar days will go here -->
-                <!-- We'll use JavaScript to populate this grid -->
-            </div>
-        </section>
+<body>
+    <h1>Gym Progress Tracker</h1>
+    <div class="calendar-grid"></div>
 
-        <!-- Charts Section -->
-        <section class="charts-section">
-            <h2>Progress Charts</h2>
-            <div class="chart" id="pieChartContainer"> <!-- Placeholder for Pie Chart --> </div>
-            <div class="chart" id="barChartContainer"> <!-- Placeholder for Bar Chart --> </div>
-        </section>
-
-        <!-- Weight Tracker Section -->
-        <section class="weight-tracker">
-            <h2>Weight Progress</h2>
-            <div class="weight-chart" id="weightChartContainer"> <!-- Placeholder for Weight Chart --> </div>
-        </section>
-    </div>
-
-    <!-- Link to Chart.js library for charts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
-<!-- Add this modal structure just before the closing </body> tag in index.html -->
-<div id="workoutModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Select Body Parts Worked Out</h2>
-        <form id="workoutForm">
-            <label><input type="checkbox" name="bodyPart" value="Chest"> Chest</label><br>
-            <label><input type="checkbox" name="bodyPart" value="Back"> Back</label><br>
-            <label><input type="checkbox" name="bodyPart" value="Shoulders"> Shoulders</label><br>
-            <label><input type="checkbox" name="bodyPart" value="Biceps"> Biceps</label><br>
-            <label><input type="checkbox" name="bodyPart" value="Triceps"> Triceps</label><br>
-            <label><input type="checkbox" name="bodyPart" value="Legs"> Legs</label><br>
-            <label><input type="checkbox" name="bodyPart" value="Calves"> Calves</label><br>
-            <label><input type="checkbox" name="bodyPart" value="Abs"> Abs</label><br>
-            <button type="submit">Log Workout</button>
-        </form>
-    </div>
-</div>
-</body>
-</html>
+    <!-- Modal for logging workouts -->
+    <div id="workoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Select Body Parts Worked Out</h2>
+            <form id="workoutForm">
+                <label><input type="checkbox" name="bodyPart" value="Chest"> Chest</label><br>
+                <label><input type="checkbox" name="bodyPart" value="Back"> Back</label><br>
+                <label><input type="checkbox" name="bodyPart" value="Shoulders"> Shoulders</label><br>
+                <label><input type="checkbox" name="bodyPart" value="Biceps"> Biceps</label><br>
+                <label><input type="checkbox" name
