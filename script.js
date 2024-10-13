@@ -13,9 +13,25 @@ document.addEventListener('DOMContentLoaded', function() {
         dayElement.textContent = day;
         dayElement.classList.add('calendar-day');
         dayElement.classList.add('no-workout');
+        dayElement.dataset.workout = ''; // Add a data attribute to store workout info
 
         // Show modal when day is clicked
         dayElement.addEventListener('click', () => {
+            // Check if there's an existing workout
+            if (dayElement.dataset.workout) {
+                const existingWorkouts = dayElement.dataset.workout.split(', ');
+                // Pre-select the checkboxes based on the existing workouts
+                const checkboxes = document.querySelectorAll('input[name="bodyPart"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = existingWorkouts.includes(checkbox.value);
+                });
+            } else {
+                // Reset checkboxes if no existing workout
+                const checkboxes = document.querySelectorAll('input[name="bodyPart"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+            }
             modal.style.display = "block"; // Show modal
             selectedDayElement = dayElement; // Store selected day element
         });
@@ -47,7 +63,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (checkedBodyParts.length > 0) {
             selectedDayElement.classList.add('has-workout');
             selectedDayElement.classList.remove('no-workout'); // Change the color to green
-            selectedDayElement.textContent = `${selectedDayElement.textContent}: ${checkedBodyParts.join(', ')}`;
+            selectedDayElement.dataset.workout = checkedBodyParts.join(', '); // Save workout data
+            selectedDayElement.textContent = `${selectedDayElement.textContent}: ${selectedDayElement.dataset.workout}`;
+        } else {
+            // If no body parts are selected, remove the workout
+            selectedDayElement.classList.remove('has-workout');
+            selectedDayElement.classList.add('no-workout');
+            selectedDayElement.dataset.workout = ''; // Clear workout data
+            selectedDayElement.textContent = selectedDayElement.textContent.split(':')[0]; // Reset text
         }
 
         modal.style.display = "none"; // Close modal
