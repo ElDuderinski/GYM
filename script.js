@@ -1,51 +1,18 @@
-document.getElementById('workout-form').addEventListener('submit', function(event) {
-  event.preventDefault();
+// script.js
 
-  const date = document.getElementById('date').value;
-  const exercise = document.getElementById('exercise').value;
-  const sets = document.getElementById('sets').value;
-  const reps = document.getElementById('reps').value;
-  const weight = document.getElementById('weight').value;
+document.addEventListener('DOMContentLoaded', function() {
+    const calendarGrid = document.querySelector('.calendar-grid');
 
-  const newEntry = {
-    date,
-    exercise,
-    sets,
-    reps,
-    weight
-  };
+    for (let day = 1; day <= 31; day++) {
+        const dayElement = document.createElement('div');
+        dayElement.textContent = day;
+        dayElement.classList.add('calendar-day');
+        
+        // Placeholder click event for each day
+        dayElement.addEventListener('click', () => {
+            alert(`Details for Day ${day}`);
+        });
 
-  let history = JSON.parse(localStorage.getItem('workoutHistory')) || [];
-  history.push(newEntry);
-  localStorage.setItem('workoutHistory', JSON.stringify(history));
-
-  displayHistory();
+        calendarGrid.appendChild(dayElement);
+    }
 });
-
-function displayHistory() {
-  const history = JSON.parse(localStorage.getItem('workoutHistory')) || [];
-  const historyTable = document.getElementById('history');
-  historyTable.innerHTML = '';
-
-  history.forEach((entry, index) => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${entry.date}</td>
-      <td>${entry.exercise}</td>
-      <td>${entry.sets}</td>
-      <td>${entry.reps}</td>
-      <td>${entry.weight}</td>
-      <td><button onclick="deleteEntry(${index})">Delete</button></td>
-    `;
-    historyTable.appendChild(row);
-  });
-}
-
-function deleteEntry(index) {
-  let history = JSON.parse(localStorage.getItem('workoutHistory')) || [];
-  history.splice(index, 1);
-  localStorage.setItem('workoutHistory', JSON.stringify(history));
-  displayHistory();
-}
-
-window.onload = displayHistory;
