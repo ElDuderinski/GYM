@@ -89,3 +89,17 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+/* Existing CSS for Calendar Section */
+.calendar-grid div {
+    background-color: #ffcccb; /* Pink color for no workout */
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Style for days with workouts */
+.calendar-grid div.has-workout {
+    background-color: #90ee90; /* Light green color for workout logged */
+}
+
