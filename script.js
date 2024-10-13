@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('workoutModal');
     const closeModal = document.querySelector('.close');
     const workoutForm = document.getElementById('workoutForm');
+    let selectedDayElement; // Variable to keep track of the selected day element
 
     // Create calendar days
     for (let day = 1; day <= 31; day++) {
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show modal when day is clicked
         dayElement.addEventListener('click', () => {
             modal.style.display = "block"; // Show modal
-            modal.dataset.selectedDay = day; // Store selected day
+            selectedDayElement = dayElement; // Store selected day element
         });
 
         calendarGrid.appendChild(dayElement);
@@ -37,17 +38,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Log workout on form submit
     workoutForm.onsubmit = function(event) {
         event.preventDefault(); // Prevent form submission
-        const selectedDay = modal.dataset.selectedDay;
+
+        // Get the selected body parts
         const checkedBodyParts = Array.from(document.querySelectorAll('input[name="bodyPart"]:checked'))
                                       .map(input => input.value);
 
-        // Find the corresponding day element and update it
-        const dayElements = document.querySelectorAll('.calendar-grid div');
-        const dayElement = dayElements[selectedDay - 1]; // Adjust for 0-based index
-
+        // Update the selected day element with the logged workout
         if (checkedBodyParts.length > 0) {
-            dayElement.classList.add('has-workout');
-            dayElement.textContent = `${selectedDay}: ${checkedBodyParts.join(', ')}`;
+            selectedDayElement.classList.add('has-workout');
+            selectedDayElement.classList.remove('no-workout'); // Change the color to green
+            selectedDayElement.textContent = `${selectedDayElement.textContent}: ${checkedBodyParts.join(', ')}`;
         }
 
         modal.style.display = "none"; // Close modal
