@@ -1,3 +1,4 @@
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -9,6 +10,7 @@ h1 {
     margin-top: 20px;
 }
 
+/* Calendar styles */
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7 columns for the days of the week */
@@ -65,4 +67,14 @@ h1 {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column; /* Stack the checkboxes vertically */
+}
+
+label {
+    margin: 5px 0; /* Spacing between labels */
 }
