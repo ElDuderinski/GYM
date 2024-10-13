@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gym Progress Tracker</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Progress Tracker</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Gym Progress Tracker</h1>
-  </header>
-  
-  <section id="log-workout">
-    <h2>Log Your Workout</h2>
-    <form id="workout-form">
-      <input type="date" id="date" required>
-      <input type="text" id="exercise" placeholder="Exercise" required>
-      <input type="number" id="sets" placeholder="Sets" required>
-      <input type="number" id="reps" placeholder="Reps" required>
-      <input type="number" id="weight" placeholder="Weight (kg)" required>
-      <button type="submit">Add Workout</button>
-    </form>
-  </section>
-  
-  <section id="workout-history">
-    <h2>Workout History</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Exercise</th>
-          <th>Sets</th>
-          <th>Reps</th>
-          <th>Weight (kg)</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="history">
-        <!-- Dynamic content here -->
-      </tbody>
-    </table>
-  </section>
+    <div class="container">
+        <!-- Calendar Section -->
+        <section class="calendar-section">
+            <h2>Workout Calendar</h2>
+            <div class="calendar-grid">
+                <!-- Calendar days will go here -->
+                <!-- We'll use JavaScript to populate this grid -->
+            </div>
+        </section>
 
-  <script src="script.js"></script>
+        <!-- Suggested Workouts Section -->
+        <aside class="sidebar">
+            <h2>Suggested Workouts</h2>
+            <ul>
+                <!-- Placeholder for suggested workouts -->
+                <li>Workout 1</li>
+                <li>Workout 2</li>
+                <li>Workout 3</li>
+            </ul>
+        </aside>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <h2>Progress Charts</h2>
+            <div class="chart" id="pieChartContainer"> <!-- Placeholder for Pie Chart --> </div>
+            <div class="chart" id="barChartContainer"> <!-- Placeholder for Bar Chart --> </div>
+        </section>
+
+        <!-- Weight Tracker Section -->
+        <section class="weight-tracker">
+            <h2>Weight Progress</h2>
+            <div class="weight-chart" id="weightChartContainer"> <!-- Placeholder for Weight Chart --> </div>
+        </section>
+    </div>
+
+    <!-- Link to Chart.js library for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
